@@ -6,6 +6,7 @@ namespace ProjectMonitoring.Models
     {
         public int LocationId { get; set; }
         public int ContractorId { get; set; }
+        public int ProjectId { get; set; }
         [Required]
         [DisplayName("Location Name")]
         public string LocationName { get; set; }
@@ -13,11 +14,11 @@ namespace ProjectMonitoring.Models
         public string Province { get; set; }
         [DisplayName("Site Type")]
         public string SiteType { get; set; }
-        [DisplayName("Site Type")]
-        public string Locality { get; set; }
         [DisplayName("Locality")]
-        public string SiteCoordniatorName { get; set; }
+        public string Locality { get; set; }
         [DisplayName("Site Coordinator Name")]
+        public string SiteCoordinatorName { get; set; }
+        [DisplayName("Site Coordinator Number")]
         public string SiteCoordniatorNumber { get; set; }
 
         public Contractor Contractor { get; set; }
