@@ -1,5 +1,7 @@
 ﻿using ProjectMonitoring.Models;
 using Microsoft.EntityFrameworkCore;
+using Supabase.Gotrue;
+
 namespace ProjectMonitoring.Data
 {
     public class ProjectMonitoringDB:DbContext

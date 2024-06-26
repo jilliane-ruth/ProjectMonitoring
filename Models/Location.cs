@@ -9,6 +9,7 @@ namespace ProjectMonitoring.Models
     public class Location:BaseModel
     {
         [PrimaryKey("location_id", false)]
+        public int LocationId { get; set; }
         [Required]
         [Column("Location Name")]
         public string LocationName { get; set; }
