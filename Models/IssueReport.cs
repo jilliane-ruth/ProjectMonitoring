@@ -6,7 +6,7 @@ namespace ProjectMonitoring.Models
     [Table("IssueReport")]
     public class IssueReport
     {
-        [PrimaryKey("issuereport_id")] 
+        [PrimaryKey("issuereport_id",false)] 
         public int IssueReportId { get; set; }
         [Column("time_stamp")]
         public DateTime TimeStamp { get; set; }

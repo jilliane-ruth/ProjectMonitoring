@@ -1,10 +1,14 @@
 ﻿using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 
 namespace ProjectMonitoring.Models
 {
-    public class ReportingForm
+    [Table("ReportingForm")]
+    public class ReportingForm:BaseModel
     {
+        [PrimaryKey("reportingform_id",false)]
         public int ReportingFormId { get; set; }
+        [Column("date")]
         public DateTime Date { get; set; }
         
         [Reference(typeof(SiteIssueForm))]

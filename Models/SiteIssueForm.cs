@@ -6,7 +6,7 @@ namespace ProjectMonitoring.Models
     [Table("SiteIssueForm")]
     public class SiteIssueForm
     {
-        [PrimaryKey("siteissueform_id")]
+        [PrimaryKey("siteissueform_id",false)]
         public int SiteIssueFormId { get; set; }
         [Column("status")]
         public string Status { get; set; }
