@@ -26,6 +26,8 @@ namespace ProjectMonitoring.Models
         public string ActionsTakenByContractor { get; set; }
 
         //Relationships
+        [Column("issuereport_id")]
+        public int IssueReportId { get; set; }
         [Reference(typeof(IssueReport))]
         public IssueReport IssueReport { get; set; }
         [Reference(typeof(ReportingForm))]

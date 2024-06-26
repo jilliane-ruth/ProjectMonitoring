@@ -10,7 +10,11 @@ namespace ProjectMonitoring.Models
         public int ReportingFormId { get; set; }
         [Column("date")]
         public DateTime Date { get; set; }
-        
+
+        //Relationships
+        [Column("siteissueform_id")]
+        public int SiteIssueFormId { get; set; }
+
         [Reference(typeof(SiteIssueForm))]
         public SiteIssueForm SiteIssueForm {  get; set; }
     }

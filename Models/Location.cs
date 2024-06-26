@@ -23,10 +23,14 @@ namespace ProjectMonitoring.Models
         [Column("Site Coordinator Number")]
         public string SiteCoordniatorNumber { get; set; }
 
-    
+
         //Relationships
+        [Column("contractor_id")]
+        public int ContractorId { get; set; }
         [Reference(typeof(Contractor))]
         public Contractor Contractor { get; set; }
+        [Column("project_id")]
+        public int ProjectId { get; set; }
         [Reference(typeof(Project))]
         public Project Project { get; set; }
         [Reference(typeof(IssueReport))] 

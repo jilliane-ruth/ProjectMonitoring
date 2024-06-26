@@ -21,6 +21,8 @@ namespace ProjectMonitoring.Models
 
 
         //Relationships
+        [Column("location_id")]
+        public int LocationId { get; set; }
         [Reference(typeof(Location))]
         public Location Location { get; set; }
         [Reference(typeof(SiteIssueForm))]
