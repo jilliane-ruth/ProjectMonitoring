@@ -17,12 +17,6 @@ namespace ProjectMonitoring.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<Contractor>().ToTable("Contractor");
-            mb.Entity<IssueReport>().ToTable("IssueReport");
-            mb.Entity<Location>().ToTable("Location");
-            mb.Entity<ReportingForm>().ToTable("ReportingForm");
-            mb.Entity<Project>().ToTable("Project");
-            mb.Entity<SiteIssueForm>().ToTable("SiteIssueForm");
 
         }
        
