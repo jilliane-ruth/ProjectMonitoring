@@ -1,36 +1,35 @@
-﻿namespace ProjectMonitoring.Models
+﻿using System.Globalization;
+using Supabase.Postgrest.Attributes;
+
+namespace ProjectMonitoring.Models
 {
+    [Table("SiteIssueForm")]
     public class SiteIssueForm
     {
+        [PrimaryKey("siteissueform_id")]
         public int SiteIssueFormId { get; set; }
-        public int IssueReportId { get; set; }
-        public int ReportingFormId { get; set; }
-
+        [Column("status")]
         public string Status { get; set; }
-        public string Remarks { get; set; }
+        [Column("prepared_by")]
         public string PreparedBy { get; set; }
+        [Column("reviewed_by")]
         public string ReviewedBy { get; set; }
+        [Column("approved_by")]
         public string ApprovedBy { get; set; }
-        public int TotalHourseDowntime {get;set;}
-        
+        [Column("total_hours_downtime")]
+        public int TotalHoursDownTime { get; set; }
+        [Column("reported_date_time")]
+        public DateTime ReportedDateTime { get; set; }
+        [Column("resolved_date_time")]
+        public DateTime ResolvedDateTime { get; set; }
+        [Column("actions_taken_by_contractors")]
         public string ActionsTakenByContractor { get; set; }
-        public DateTime DateTimeResolved { get; set; }
-
-        //Issue Report
-        public DateTime DateTimeReported { get; set; }
-        public string SCofIssueReported { get; set; }
-        public string? SCofSpeedTest { get; set; }
-        public string IssueDescription { get; set; }
-        public string EmailAddress {get;set;}
-        public string ContractorName { get; set; }
-        public string LocationName { get; set; }
-        public string SiteType { get; set; }
-        public string Province { get; set; }
-
 
         //Relationships
+        [Reference(typeof(IssueReport))]
         public IssueReport IssueReport { get; set; }
-        public ReportingForm ReportingForm { get; set; }
+        [Reference(typeof(ReportingForm))]
+        public ICollection<ReportingForm> ReportingForms { get; set; }
 
     }
 }

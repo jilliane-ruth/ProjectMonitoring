@@ -1,14 +1,13 @@
-﻿namespace ProjectMonitoring.Models
+﻿using Supabase.Postgrest.Attributes;
+
+namespace ProjectMonitoring.Models
 {
     public class ReportingForm
     {
-        public int MontoringReportId { get; set; }
+        public int ReportingFormId { get; set; }
         public DateTime Date { get; set; }
-        public string LocationName { get; set; }
-        public string Issue { get; set; }
-        public string ActionsTakenByContractor { get; set; }
-        public int TotalHourseDowntime { get; set; }
-
-        public ICollection<SiteIssueForm> SiteIssueForms {  get; set; }
+        
+        [Reference(typeof(SiteIssueForm))]
+        public SiteIssueForm SiteIssueForm {  get; set; }
     }
 }

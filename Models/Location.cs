@@ -1,28 +1,36 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+
 namespace ProjectMonitoring.Models
 {
-    public class Location
+    [Table("Location")]
+    public class Location:BaseModel
     {
-        public int LocationId { get; set; }
-        public int ContractorId { get; set; }
-        public int ProjectId { get; set; }
+        [PrimaryKey("location_id", false)]
         [Required]
-        [DisplayName("Location Name")]
+        [Column("Location Name")]
         public string LocationName { get; set; }
-        [DisplayName("Province")]
+        [Column("Province")]
         public string Province { get; set; }
-        [DisplayName("Site Type")]
+        [Column("Site Type")]
         public string SiteType { get; set; }
-        [DisplayName("Locality")]
+        [Column("Locality")]
         public string Locality { get; set; }
-        [DisplayName("Site Coordinator Name")]
+        [Column("Site Coordinator Name")]
         public string SiteCoordinatorName { get; set; }
-        [DisplayName("Site Coordinator Number")]
+        [Column("Site Coordinator Number")]
         public string SiteCoordniatorNumber { get; set; }
 
+    
+        //Relationships
+        [Reference(typeof(Contractor))]
         public Contractor Contractor { get; set; }
+        [Reference(typeof(Project))]
         public Project Project { get; set; }
-        
+        [Reference(typeof(IssueReport))] 
+        public ICollection<IssueReport> IssueReports { get; set; }
+
     }
 }

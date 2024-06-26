@@ -1,3 +1,4 @@
+using Supabase;
 using ProjectMonitoring.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,7 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ProjectMonitoringDB>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//supabase
+builder.Services.AddScoped<Supabase.Client>(_ => new Supabase.Client(builder.Configuration["SupabaseUrl"], builder.Configuration["SupabaseKey"], 
+    new SupabaseOptions
+{
+    AutoRefreshToken = true
+}));
+
+builder.Services.AddDbContext<ProjectMonitoringDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
 
 
 
