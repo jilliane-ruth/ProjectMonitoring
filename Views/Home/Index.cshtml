@@ -5,13 +5,19 @@
 <div class="container text-center">
     <h1>Issue Dashboard</h1>
     <div class="row mb-4">
-        <div class="col">
+        <div class="col text-left">
             <label for="fromDate">From:</label>
             <input type="date" id="fromDate" class="form-control">
         </div>
-        <div class="col">
+        <div class="col text-left">
             <label for="toDate">To:</label>
             <input type="date" id="toDate" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col text-right">
+            <button id="viewButton" class="btn btn-primary">View</button>
+            <button id="clearButton" class="btn btn-secondary">Clear</button>
         </div>
     </div>
     <div class="row">
@@ -49,35 +55,64 @@
 </div>
 
 <script>
-    // JavaScript to handle date selection and update the dashboard
-    document.getElementById('fromDate').addEventListener('change', updateDashboard);
-    document.getElementById('toDate').addEventListener('change', updateDashboard);
+    document.getElementById('viewButton').addEventListener('click', updateDashboard);
+    document.getElementById('clearButton').addEventListener('click', clearDashboard);
 
     function updateDashboard() {
-        // Fetch data based on selected dates and update the dashboard
         const fromDate = document.getElementById('fromDate').value;
         const toDate = document.getElementById('toDate').value;
 
-        // Example data fetching and updating logic
-        // Replace this with actual data fetching logic
-        const data = {
-            infinivan: { issues: 5, resolved: 3 },
-            bcnet: { issues: 7, resolved: 5 },
-            converage: { issues: 4, resolved: 4 },
-            handlink: { issues: 6, resolved: 2 },
-            totalReported: 22,
-            totalResolved: 14
+        if (fromDate && toDate) {
+            // Example data for demonstration purposes
+            const data = {
+                infinivan: { issues: 5, resolved: 3 },
+                bcnet: { issues: 7, resolved: 5 },
+                converage: { issues: 4, resolved: 4 },
+                handlink: { issues: 6, resolved: 2 },
+                totalReported: 22,
+                totalResolved: 14
+            };
+
+            document.getElementById('infinivanIssues').innerText = data.infinivan.issues;
+            document.getElementById('infinivanResolved').innerText = data.infinivan.resolved;
+            document.getElementById('bcnetIssues').innerText = data.bcnet.issues;
+            document.getElementById('bcnetResolved').innerText = data.bcnet.resolved;
+            document.getElementById('converageIssues').innerText = data.converage.issues;
+            document.getElementById('converageResolved').innerText = data.converage.resolved;
+            document.getElementById('handlinkIssues').innerText = data.handlink.issues;
+            document.getElementById('handlinkResolved').innerText = data.handlink.resolved;
+            document.getElementById('totalReported').innerText = data.totalReported;
+            document.getElementById('totalResolved').innerText = data.totalResolved;
+        } else {
+            alert("Please select both 'From' and 'To' dates.");
+        }
+    }
+
+    function clearDashboard() {
+        document.getElementById('fromDate').value = '';
+        document.getElementById('toDate').value = '';
+        // Example default data for demonstration purposes
+        const defaultData = {
+            infinivan: { issues: 10, resolved: 8 },
+            bcnet: { issues: 12, resolved: 10 },
+            converage: { issues: 8, resolved: 7 },
+            handlink: { issues: 9, resolved: 6 },
+            totalReported: 39,
+            totalResolved: 31
         };
 
-        document.getElementById('infinivanIssues').innerText = data.infinivan.issues;
-        document.getElementById('infinivanResolved').innerText = data.infinivan.resolved;
-        document.getElementById('bcnetIssues').innerText = data.bcnet.issues;
-        document.getElementById('bcnetResolved').innerText = data.bcnet.resolved;
-        document.getElementById('converageIssues').innerText = data.converage.issues;
-        document.getElementById('converageResolved').innerText = data.converage.resolved;
-        document.getElementById('handlinkIssues').innerText = data.handlink.issues;
-        document.getElementById('handlinkResolved').innerText = data.handlink.resolved;
-        document.getElementById('totalReported').innerText = data.totalReported;
-        document.getElementById('totalResolved').innerText = data.totalResolved;
+        document.getElementById('infinivanIssues').innerText = defaultData.infinivan.issues;
+        document.getElementById('infinivanResolved').innerText = defaultData.infinivan.resolved;
+        document.getElementById('bcnetIssues').innerText = defaultData.bcnet.issues;
+        document.getElementById('bcnetResolved').innerText = defaultData.bcnet.resolved;
+        document.getElementById('converageIssues').innerText = defaultData.converage.issues;
+        document.getElementById('converageResolved').innerText = defaultData.converage.resolved;
+        document.getElementById('handlinkIssues').innerText = defaultData.handlink.issues;
+        document.getElementById('handlinkResolved').innerText = defaultData.handlink.resolved;
+        document.getElementById('totalReported').innerText = defaultData.totalReported;
+        document.getElementById('totalResolved').innerText = defaultData.totalResolved;
     }
+
+    // Initialize with default data showing all reports and issues regardless of date
+    clearDashboard();
 </script>
