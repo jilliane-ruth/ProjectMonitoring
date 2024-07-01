@@ -10,6 +10,30 @@ namespace ProjectMonitoring.Data
 {
     public class SupabaseService
     {
+        public IConfiguration Configuration { get; }
+        public SupabaseService(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            var supabaseConfig = new SupabaseConfig
+            {
+                Url = Environment.GetEnvironmentVariable("SUPABASE_URL"),
+                AnonKey = Environment.GetEnvironmentVariable("SUPABASE_ANON_KEY")
+            };
+            services.AddSingleton(supabaseConfig);
+
+            services.AddControllersWithViews();
+        }
+
         
+
     }
+}
+public class SupabaseConfig
+{
+    public string Url { get; set; }
+    public string AnonKey { get; set; }
 }

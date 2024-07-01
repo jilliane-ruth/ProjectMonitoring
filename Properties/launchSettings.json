@@ -15,7 +15,9 @@
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5076",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SUPABASE_URL": "https://bacucuxysqlosdlmrqev.supabase.co",
+        "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhY3VjdXh5c3Fsb3NkbG1ycWV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzMzI4MTMsImV4cCI6MjAzMzkwODgxM30.SiJmWFLYmK7ovn8bgsLMWP-ehfS5ZvfXmRouuLGHEHk"
       }
     },
     "https": {
