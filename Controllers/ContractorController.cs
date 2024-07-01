@@ -9,20 +9,19 @@ namespace ProjectMonitoring.Controllers
 {
     public class ContractorController : Controller
     {
-        private readonly Supabase.Client _supabaseClient;
-       
-        public ContractorController(SupabaseConfig supabaseConfig)
+        private readonly SupabaseService _supabaseClient;
+
+        public ContractorController(SupabaseService supabase)
         {
-            _supabaseClient = new Supabase.Client(supabaseConfig.Url, supabaseConfig.AnonKey);
+            _supabaseClient = supabase;
 
         }
-
-        [HttpPost]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "SUPABASE_URL");
-            return View();
+            var data = await _supabaseClient.GetDataFromSupabase();
+            return View(data);
         }
+
 
     }
 }

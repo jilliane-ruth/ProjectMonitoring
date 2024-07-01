@@ -5,35 +5,38 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using ProjectMonitoring.Models;
+using Newtonsoft.Json;
 
 namespace ProjectMonitoring.Data
 {
     public class SupabaseService
     {
+        private readonly IHttpClientFactory _httpClient;
         public IConfiguration Configuration { get; }
-        public SupabaseService(IConfiguration configuration)
+        public void ConfigurationService(IServiceCollection services)
         {
-            Configuration = configuration;
+
+            var supabaseSettings = Configuration.GetSection("Supabase");
+            services.AddSingleton(new Supabase.Client(supabaseSettings["FunctionUrl"], supabaseSettings["AnonKey"]));
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public async Task<List<Contractor>> GetDataFromSupabase()
         {
-            var supabaseConfig = new SupabaseConfig
+            var client = _httpClient.CreateClient("Supabase");
+            var response = await client.GetAsync("/rest/v1/Contractor"); // Replace with your actual table or endpoint
+
+            if (response.IsSuccessStatusCode)
             {
-                Url = Environment.GetEnvironmentVariable("SUPABASE_URL"),
-                AnonKey = Environment.GetEnvironmentVariable("SUPABASE_ANON_KEY")
-            };
-            services.AddSingleton(supabaseConfig);
-
-            services.AddControllersWithViews();
+                return await response.Content.ReadFromJsonAsync<List<Contractor>>();
+            }
+            else
+            {
+                // Handle error
+                return new List<Contractor>();
+            }
         }
 
-        
+
 
     }
-}
-public class SupabaseConfig
-{
-    public string Url { get; set; }
-    public string AnonKey { get; set; }
 }

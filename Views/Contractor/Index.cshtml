@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ProjectMonitoring.Models.Contractor>
+
+<h2>Contarctors</h2>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Telephone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var contractor in Model)
+        {
+            <tr>
+                <td>@contractor.ContractorId</td>
+                <td>@contractor.ContractorName</td>
+                <td>@contractor.TelephoneNumber</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
