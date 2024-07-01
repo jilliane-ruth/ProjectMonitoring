@@ -49,4 +49,10 @@ app.MapControllerRoute(
     defaults: new { controller = "Contractor" }
 );
 
+app.MapControllerRoute(
+    name: "issueReport",
+    pattern: "{action=Index}/{id?}",
+    defaults: new { controller = "IssueReport" }
+);
+
 app.Run();

@@ -5,10 +5,8 @@ namespace ProjectMonitoring.Controllers
 {
     public class IssueReportController : Controller
     {
-        public IActionResult Index()
+        public IActionResult IssueReport()
         {
-            
-                
             return View();
         }
 
