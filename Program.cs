@@ -9,14 +9,7 @@ builder.Services.AddControllersWithViews();
 
 var url = Environment.GetEnvironmentVariable("https://bacucuxysqlosdlmrqev.supabase.co");
 var key = Environment.GetEnvironmentVariable("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhY3VjdXh5c3Fsb3NkbG1ycWV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzMzI4MTMsImV4cCI6MjAzMzkwODgxM30.SiJmWFLYmK7ovn8bgsLMWP-ehfS5ZvfXmRouuLGHEHk");
-
-/*var options = new Supabase.SupabaseOptions
-{
-    AutoConnectRealtime = true
-};
-
-var supabase = new Supabase.Client(url, key, options);*/
-//await supabase.InitializeAsync();
+// Validate the URL
 
 //supabase
 builder.Services.AddScoped<Supabase.Client>(_ => new Supabase.Client(builder.Configuration["SupabaseUrl"], builder.Configuration["SupabaseKey"], 
@@ -38,26 +31,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-var client = new HttpClient();
-var request = new HttpRequestMessage(HttpMethod.Post, url);
-request.Headers.Add("apikey", key);
-request.Headers.Add("Authorization", "Bearer " + key);
-var response = await client.SendAsync(request);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
