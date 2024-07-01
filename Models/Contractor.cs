@@ -24,8 +24,8 @@ namespace ProjectMonitoring.Models
         [Column("company_address")]
         public string CompanyAddress { get; set; }
 
-        [Reference(typeof(Location))]
-        public ICollection<Location> Locations { get; set; }
+        [Reference(typeof(SiteLocation))]
+        public ICollection<SiteLocation> Locations { get; set; }
 
     }
 }

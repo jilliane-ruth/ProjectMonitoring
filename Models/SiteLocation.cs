@@ -6,7 +6,7 @@ using Supabase.Postgrest.Models;
 namespace ProjectMonitoring.Models
 {
     [Table("Location")]
-    public class Location:BaseModel
+    public class SiteLocation:BaseModel
     {
         [PrimaryKey("location_id", false)]
         public int LocationId { get; set; }
@@ -22,7 +22,7 @@ namespace ProjectMonitoring.Models
         [Column("Site Coordinator Name")]
         public string SiteCoordinatorName { get; set; }
         [Column("Site Coordinator Number")]
-        public string SiteCoordniatorNumber { get; set; }
+        public string SiteCoordinatorNumber { get; set; }
 
 
         //Relationships

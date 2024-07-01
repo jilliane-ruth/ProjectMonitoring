@@ -15,8 +15,8 @@ namespace ProjectMonitoring.Models
         public string ProjectName { get; set; }
         [Column("project_description")]
         public string ProjectDescription { get; set; }
-        [Reference(typeof(Location))]
-        public ICollection<Location> Locations { get; set; }
+        [Reference(typeof(SiteLocation))]
+        public ICollection<SiteLocation> SiteLocations { get; set; }
 
     }
 }
