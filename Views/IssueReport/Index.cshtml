@@ -1,0 +1,37 @@
+﻿@model List<IssueReport>
+
+<div>
+    <h1>Reports</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Time Stamp</th>
+            <th>Site Name</th>
+            <th>Province</th>
+            <th>Contractor Name</th>
+            <th>Site Coordinator Name</th>
+            <th>Site Coordinator Contact Number</th>
+            <th>Issue Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.TimeStamp</td>
+                    <td>@Html.DisplayFor(m=>obj.SiteLocation.LocationName)</td>
+                    <td>@Html.DisplayFor(m=>obj.SiteLocation.Contractor.ContractorName)</td>
+                    <td>@obj.IssueDescription</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    
+    
+    
+    
+    
+
+</div>

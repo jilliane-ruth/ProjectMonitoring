@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectMonitoring.Models;
 
 namespace ProjectMonitoring.Controllers
 {
@@ -6,7 +7,24 @@ namespace ProjectMonitoring.Controllers
     {
         public IActionResult Index()
         {
+            
+                
             return View();
         }
+
+        //Display
+        
+
+        //ISSUE REPORT - EDIT, CREATE, DELETE
+        //CREATE Issue Report
+        [HttpPost]
+        public IActionResult Create(IssueReport issueReport)
+        {
+            return View();
+        }
+
+
+
+
     }
 }
