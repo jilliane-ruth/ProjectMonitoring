@@ -3,15 +3,81 @@
 }
 
 <div class="container text-center">
+    <h1>Issue Dashboard</h1>
+    <div class="row mb-4">
+        <div class="col">
+            <label for="fromDate">From:</label>
+            <input type="date" id="fromDate" class="form-control">
+        </div>
+        <div class="col">
+            <label for="toDate">To:</label>
+            <input type="date" id="toDate" class="form-control">
+        </div>
+    </div>
     <div class="row">
         <div class="col">
-            Column
+            <h3>Infinivan</h3>
+            <p>Sites with Issues: <span id="infinivanIssues">0</span></p>
+            <p>Resolved Issues: <span id="infinivanResolved">0</span></p>
         </div>
         <div class="col">
-            Column
+            <h3>BCNet</h3>
+            <p>Sites with Issues: <span id="bcnetIssues">0</span></p>
+            <p>Resolved Issues: <span id="bcnetResolved">0</span></p>
         </div>
         <div class="col">
-            Column
+            <h3>Converage</h3>
+            <p>Sites with Issues: <span id="converageIssues">0</span></p>
+            <p>Resolved Issues: <span id="converageResolved">0</span></p>
+        </div>
+        <div class="col">
+            <h3>Handlink Inc.</h3>
+            <p>Sites with Issues: <span id="handlinkIssues">0</span></p>
+            <p>Resolved Issues: <span id="handlinkResolved">0</span></p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h3>Total Reported Issues</h3>
+            <p><span id="totalReported">0</span></p>
+        </div>
+        <div class="col">
+            <h3>Total Resolved Issues</h3>
+            <p><span id="totalResolved">0</span></p>
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript to handle date selection and update the dashboard
+    document.getElementById('fromDate').addEventListener('change', updateDashboard);
+    document.getElementById('toDate').addEventListener('change', updateDashboard);
+
+    function updateDashboard() {
+        // Fetch data based on selected dates and update the dashboard
+        const fromDate = document.getElementById('fromDate').value;
+        const toDate = document.getElementById('toDate').value;
+
+        // Example data fetching and updating logic
+        // Replace this with actual data fetching logic
+        const data = {
+            infinivan: { issues: 5, resolved: 3 },
+            bcnet: { issues: 7, resolved: 5 },
+            converage: { issues: 4, resolved: 4 },
+            handlink: { issues: 6, resolved: 2 },
+            totalReported: 22,
+            totalResolved: 14
+        };
+
+        document.getElementById('infinivanIssues').innerText = data.infinivan.issues;
+        document.getElementById('infinivanResolved').innerText = data.infinivan.resolved;
+        document.getElementById('bcnetIssues').innerText = data.bcnet.issues;
+        document.getElementById('bcnetResolved').innerText = data.bcnet.resolved;
+        document.getElementById('converageIssues').innerText = data.converage.issues;
+        document.getElementById('converageResolved').innerText = data.converage.resolved;
+        document.getElementById('handlinkIssues').innerText = data.handlink.issues;
+        document.getElementById('handlinkResolved').innerText = data.handlink.resolved;
+        document.getElementById('totalReported').innerText = data.totalReported;
+        document.getElementById('totalResolved').innerText = data.totalResolved;
+    }
+</script>
