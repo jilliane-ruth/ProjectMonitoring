@@ -1,28 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectMonitoring.Models;
+using Supabase;
 
 namespace ProjectMonitoring.Controllers
 {
     public class IssueReportController : Controller
     {
-        public IActionResult IssueReport()
-        {
-            return View();
-        }
+        private readonly Supabase.Client _supabase;
 
-        //Display
+        public IssueReportController(Supabase.Client supabase)
+        {
+            _supabase = supabase;
+        }
         
-
-        //ISSUE REPORT - EDIT, CREATE, DELETE
-        //CREATE Issue Report
-        [HttpPost]
-        public IActionResult Create(IssueReport issueReport)
+        //DISPLAY
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var response = await _supabase.From<IssueReport>().Order("issuereport_id",
+                Supabase.Postgrest.Constants.Ordering.Ascending).Get();
+            var issueReports = response.Models;
+            return View(issueReports);
         }
 
+        //ISSUE REPORT - CREATE, EDIT, DELETE
+        //CREATE Issue Report
+        public IActionResult Create()
+        {
 
-
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(IssueReport issueReport)
+        {
+            if (ModelState.IsValid)
+            {
+                var resp = await _supabase.From<IssueReport>().Insert(issueReport);
+                    
+                    
+                return RedirectToAction(nameof(Index));
+            }
+            return View(issueReport);
+        }
+       
 
     }
 }

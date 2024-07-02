@@ -7,24 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var url = Environment.GetEnvironmentVariable("https://bacucuxysqlosdlmrqev.supabase.co");
-var key = Environment.GetEnvironmentVariable("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhY3VjdXh5c3Fsb3NkbG1ycWV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzMzI4MTMsImV4cCI6MjAzMzkwODgxM30.SiJmWFLYmK7ovn8bgsLMWP-ehfS5ZvfXmRouuLGHEHk");
+var url = builder.Configuration["Supabase:FunctionUrl"];
+var key = builder.Configuration["Supabase:AnonKey"];
 
-// var options = new Supabase.SupabaseOptions
-// {
-//     AutoConnectRealtime = true
-// };
-//
-// var supabase = new Supabase.Client(url, key, options);
-// await supabase.InitializeAsync();
-
-//supabase
-builder.Services.AddScoped<Supabase.Client>(_ => new Supabase.Client(builder.Configuration["FunctionUrl"], builder.Configuration["AnonKey"], 
-    new SupabaseOptions
+var options = new Supabase.SupabaseOptions()
 {
     AutoRefreshToken = true,
     AutoConnectRealtime = true
-}));
+};
+
+var supabase = new Supabase.Client(url, key, options);
+await supabase.InitializeAsync();
+
+builder.Services.AddSingleton(supabase);
 
 var app = builder.Build();
 

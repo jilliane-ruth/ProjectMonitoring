@@ -1,34 +1,35 @@
-﻿@{
+﻿@model ProjectMonitoring.Models.IssueReport
+@{
     ViewData["Title"] = "Issue Report Form";
 }
 
 <h2>Submit a ticket</h2>
 <p>Please fill out the form below to report any issues you are experiencing. Ensure all required fields are completed accurately.</p>
 
-<form method="post" enctype="multipart/form-data">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="TimeStamp">Time Stamp</label>
-                <input id="TimeStamp" name="TimeStamp" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+                <label asp-for="TimeStamp">Time Stamp</label>
+                <input asp-for="TimeStamp" id="TimeStamp" name="TimeStamp" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
             </div>
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="EmailAddress">Email Address</label>
-                <input id="EmailAddress" name="EmailAddress" class="form-control" type="email" required />
+                <label asp-for="EmailAddress">Email Address</label>
+                <input asp-for="EmailAddress" id="EmailAddress" name="EmailAddress" class="form-control" type="email" required />
             </div>
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="SCofIssueReported">Screenshot of Issue Reported</label>
-                <input id="SCofIssueReported" name="SCofIssueReported" class="form-control" type="file" onchange="validateFileSize(this)" required />
+                <label asp-for="SCofIssueReported">Screenshot of Issue Reported</label>
+                <input asp-for="SCofIssueReported" id="SCofIssueReported" name="SCofIssueReported" class="form-control" type="file" onchange="validateFileSize(this)" required />
             </div>
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="SCofSpeedTest">Screenshot of Speed Test</label>
-                <input id="SCofSpeedTest" name="SCofSpeedTest" class="form-control" type="file" onchange="validateFileSize(this)" required />
+                <label asp-for="SCofSpeedTest">Screenshot of Speed Test</label>
+                <input asp-for="SCofSpeedTest" id="SCofSpeedTest" name="SCofSpeedTest" class="form-control" type="file" onchange="validateFileSize(this)" required />
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="IssueDescription">Issue Description</label>
-                <textarea id="IssueDescription" name="IssueDescription" class="form-control" required></textarea>
+                <label asp-for="IssueDescription">Issue Description</label>
+                <textarea asp-for="IssueDescription" id="IssueDescription" name="IssueDescription" class="form-control" required></textarea>
             </div>
             <div class="form-group" style="margin-bottom: 15px;">
                 <label for="LocationId">Site</label>
@@ -44,6 +45,10 @@
         </div>
     </div>
 </form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 <script>
     function validateFileSize(input) {

@@ -11,17 +11,17 @@ namespace ProjectMonitoring.Models
         [PrimaryKey("location_id", false)]
         public int LocationId { get; set; }
         [Required]
-        [Column("Location Name")]
+        [Column("location_name")]
         public string LocationName { get; set; }
-        [Column("Province")]
+        [Column("province")]
         public string Province { get; set; }
-        [Column("Site Type")]
+        [Column("site_type")]
         public string SiteType { get; set; }
-        [Column("Locality")]
+        [Column("locality")]
         public string Locality { get; set; }
-        [Column("Site Coordinator Name")]
+        [Column("site_coordinator_name")]
         public string SiteCoordinatorName { get; set; }
-        [Column("Site Coordinator Number")]
+        [Column("site_coordinator_number")]
         public string SiteCoordinatorNumber { get; set; }
 
 

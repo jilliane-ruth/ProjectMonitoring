@@ -1,10 +1,11 @@
 ﻿using System.Globalization;
 using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 
 namespace ProjectMonitoring.Models
 {
     [Table("SiteIssueForm")]
-    public class SiteIssueForm
+    public class SiteIssueForm:BaseModel
     {
         [PrimaryKey("siteissueform_id",false)]
         public int SiteIssueFormId { get; set; }
@@ -22,7 +23,7 @@ namespace ProjectMonitoring.Models
         public DateTime ReportedDateTime { get; set; }
         [Column("resolved_date_time")]
         public DateTime ResolvedDateTime { get; set; }
-        [Column("actions_taken_by_contractors")]
+        [Column("actions_taken_by_contractor")]
         public string ActionsTakenByContractor { get; set; }
 
         //Relationships
