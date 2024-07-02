@@ -41,7 +41,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{action=Index}/{id?}",
-    defaults: new { controller = "Home" }
+    defaults: new { controller = "Contractor" }
 );
 
 app.MapControllerRoute(
